@@ -7,13 +7,30 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <TextView
-            android:layout_width="wrap_content"
+    <Button
+            android:text="Valider"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:id="@+id/validateButton"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" style="@style/HeticButton"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/emailField" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/passwordField" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:hint="Email"/>
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/passwordField" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/validateButton" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:hint="Password"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

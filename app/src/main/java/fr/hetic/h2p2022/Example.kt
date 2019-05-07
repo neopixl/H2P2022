@@ -81,7 +81,33 @@ fun test() {
 
 
 
+
+
+    val values = mutableListOf<Int>(10, 12, 14)
+
+    val valuesOver10Long = values.filter { value -> value>10 }
+    val valuesOver10 = values.filter { it>10 }
+
+
+    val email = "asdasdasdasdasd"
+    email.isEmail()
+
+    val test = email containsTest "@"
+
+
 }
+
+
+fun String.isEmail(): Boolean {
+    return this.contains("@")
+}
+infix fun String.containsTest(value: String): Boolean {
+    return this.contains(value)
+}
+
+
+
+
 
 class Article {
 
