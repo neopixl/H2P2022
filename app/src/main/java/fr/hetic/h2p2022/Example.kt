@@ -91,9 +91,22 @@ fun test() {
 
 
 
+
+
 }
 
 
+val integerValues = mutableListOf(1,2,3)
+val floatValues = mutableListOf(1.0f,2.0f,3.0f)
+
+fun arrangeValue(value: Number) {
+    if(value is Int) {
+        integerValues.add(value)
+    }
+    if(value is Float) {
+        floatValues.add(value)
+    }
+}
 
 data class Pokemon(var name: String, var level: Int = 1)
 
