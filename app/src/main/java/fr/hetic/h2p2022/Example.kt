@@ -114,14 +114,3 @@ class Article {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-class
