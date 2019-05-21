@@ -1,9 +1,11 @@
 package fr.hetic.h2p2022
 
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
@@ -34,6 +36,16 @@ class MainActivity : AppCompatActivity(), TextWatcher {
             intent.putExtra("KEY2", false)
             intent.putExtra("KEY3", 78)
             intent.putExtra("message", "Ceci est un message trop cool : $emailAsString")
+            startActivityForResult(intent, 5)
+        }
+        cameraButton.setOnClickListener {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+            startActivityForResult(intent, 98)
+        }
+        listButton.setOnClickListener {
+            val intent = Intent(this, ListActivity::class.java)
+
             startActivity(intent)
         }
 
@@ -94,6 +106,23 @@ class MainActivity : AppCompatActivity(), TextWatcher {
             validateButton.setBackgroundResource(R.color.green)
         } else {
             validateButton.setBackgroundResource(R.color.red)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 5 && resultCode == Activity.RESULT_OK) {
+            val isOk = data?.extras?.getBoolean("isOk") ?: false
+
+            Toast.makeText(this, "$isOk", Toast.LENGTH_LONG).show()
+
+        } else if (requestCode == 98 && resultCode == Activity.RESULT_OK) {
+
+            Toast.makeText(this, "HERE IS A PHOTO", Toast.LENGTH_LONG).show()
+
+        } else {
+            Toast.makeText(this, "IS NOTHING !!", Toast.LENGTH_LONG).show()
         }
     }
 }
