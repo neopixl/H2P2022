@@ -10,6 +10,12 @@
 
     <style name="CustomButton" parent="TextAppearance.AppCompat.Button">
         <item name="android:background">@color/red</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:background">@color/red</item>
     </style>
 
 </resources>

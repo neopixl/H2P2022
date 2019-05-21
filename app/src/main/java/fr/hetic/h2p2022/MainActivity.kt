@@ -1,11 +1,17 @@
 package fr.hetic.h2p2022
 
+import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity(), TextWatcher {
 
@@ -16,10 +22,39 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         validateButton.setOnClickListener {
             onUserTryLogin()
         }
+        scrollViewButton.setOnClickListener {
+            val intent = Intent(this, ScrollViewActivity::class.java)
+            startActivity(intent)
+        }
+        displayButton.setOnClickListener {
+            val emailAsString = emailField.text.toString()
 
+            val intent = Intent(this, DisplayActivity::class.java)
+            intent.putExtra("KEY", "VALUE")
+            intent.putExtra("KEY2", false)
+            intent.putExtra("KEY3", 78)
+            intent.putExtra("message", "Ceci est un message trop cool : $emailAsString")
+            startActivity(intent)
+        }
 
         emailField.addTextChangedListener(this)
         passwordField.addTextChangedListener(this)
+
+        // Exemple de creation en code *NE PAS FAIRE*
+        // --- DEBUT
+        val newTextView = TextView(this)
+        newTextView.text = "My Custom text view"
+        newTextView.setBackgroundResource(R.color.red)
+
+        val layoutParam = ConstraintLayout.LayoutParams(
+            ConstraintLayout.LayoutParams.MATCH_PARENT,
+            ConstraintLayout.LayoutParams.WRAP_CONTENT
+        )
+        newTextView.layoutParams = layoutParam
+
+        mainContainer.addView(newTextView)
+        // --- FIN
+
     }
 
     fun onUserTryLogin() {
@@ -28,7 +63,18 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         val password = passwordField.text.toString()
 
 
-        Toast.makeText(this, "CLICK !! ($email / $password)", Toast.LENGTH_SHORT).show()
+        val alertBuild = AlertDialog.Builder(this, R.style.CustomDialog)
+        alertBuild.setMessage("CLICK !! ($email / $password)")
+        alertBuild.setCancelable(true)
+        alertBuild.setIcon(R.drawable.logo)
+        alertBuild.setPositiveButton("OK") { dialog, which ->
+
+        }
+
+        val dialog = alertBuild.create()
+        dialog.show()
+
+        //Toast.makeText(this, "CLICK !! ($email / $password)", Toast.LENGTH_SHORT).show()
     }
 
     override fun afterTextChanged(s: Editable?) {
