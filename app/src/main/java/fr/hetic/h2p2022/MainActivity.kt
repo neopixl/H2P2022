@@ -86,7 +86,6 @@ class MainActivity : AppCompatActivity(), TextWatcher {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        Activity.RESULT
         if (requestCode == 5 && resultCode == Activity.RESULT_OK) {
             val myReturnedBool = data?.extras?.getBoolean("returnedBool", false)
         }
