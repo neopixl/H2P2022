@@ -6,9 +6,6 @@ import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.items.AbstractItem
 import fr.hetic.h2p2022.Pokemon
 import fr.hetic.h2p2022.R
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 /**
  * Created by Florian ALONSO (Neopixl SA).
@@ -36,12 +33,11 @@ class PokemonViewHolder(itemView: View) : FastAdapter.ViewHolder<PokemonItem>(it
         pokemonName.text = ""
     }
 
-
 }
 
 class PokemonItem(val pokemon: Pokemon) : AbstractItem<PokemonItem, PokemonViewHolder>() {
 
-    override fun getType() = 0
+    override fun getType() = R.id.item_pokemon
 
     override fun getViewHolder(v: View) = PokemonViewHolder(v)
 
