@@ -38,7 +38,13 @@ class MainActivity : AppCompatActivity(), TextWatcher {
 
             val email = emailField.text.toString()
             intent.putExtra("message", "Ceci est un message trop cool : $email")
-            startActivityForResult(intent, 5)
+            startActivityForResult(intent, 2)
+        }
+
+        listButton.setOnClickListener {
+            val intent = Intent(this, ListActivity::class.java)
+
+            startActivity(intent)
         }
 
     }
@@ -86,8 +92,15 @@ class MainActivity : AppCompatActivity(), TextWatcher {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == 5 && resultCode == Activity.RESULT_OK) {
-            val myReturnedBool = data?.extras?.getBoolean("returnedBool", false)
+        if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
+
+            val isOk = data?.extras?.getBoolean("isOk") ?: false
+
+            Toast.makeText(this, "$isOk", Toast.LENGTH_LONG).show()
+
+
+        } else {
+            Toast.makeText(this, "Nothing here !!!", Toast.LENGTH_LONG).show()
         }
     }
 }
