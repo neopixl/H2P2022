@@ -35,11 +35,9 @@ class PokemonViewHolder(itemView: View) : FastAdapter.ViewHolder<PokemonItem>(it
 
 
 
-
-
 class PokemonItem(val pokemon: Pokemon) : AbstractItem<PokemonItem, PokemonViewHolder>() {
 
-    override fun getType() = 0
+    override fun getType() = R.id.item_pokemon
 
     override fun getViewHolder(v: View) = PokemonViewHolder(v)
 
