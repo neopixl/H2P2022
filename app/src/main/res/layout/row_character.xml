@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
+
+    <TextView
+            android:text="NAME"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameTextView" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-medium" android:textStyle="italic" android:textSize="24sp"
+            android:textColor="#673AB7"/>
+    <TextView
+            android:text="ALIVE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/statusTextView"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp" android:textSize="14sp" android:textStyle="italic"
+            android:textColor="#FFC107"/>
+    <TextView
+            android:text="SPECIES"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/speciesTextView"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

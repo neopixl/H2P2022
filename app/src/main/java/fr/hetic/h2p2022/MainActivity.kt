@@ -48,6 +48,10 @@ class MainActivity : AppCompatActivity(), TextWatcher {
 
             startActivity(intent)
         }
+        rickButton.setOnClickListener {
+            val intent = Intent(this, RickMortyActivity::class.java)
+            startActivity(intent)
+        }
 
         emailField.addTextChangedListener(this)
         passwordField.addTextChangedListener(this)

@@ -71,6 +71,5 @@ class ListActivity : AppCompatActivity() {
 
         }
 
-
     }
 }
