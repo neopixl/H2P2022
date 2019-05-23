@@ -46,6 +46,10 @@ class MainActivity : AppCompatActivity(), TextWatcher {
 
             startActivity(intent)
         }
+        rickButton.setOnClickListener {
+            val intent = Intent(this, RickListActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
