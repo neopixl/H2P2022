@@ -12,14 +12,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), TextWatcher {
 
+    var firebaseAuth: FirebaseAuth? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         validateButton.setOnClickListener {
             onUserTryLogin()
@@ -52,6 +57,10 @@ class MainActivity : AppCompatActivity(), TextWatcher {
             val intent = Intent(this, RickMortyActivity::class.java)
             startActivity(intent)
         }
+        fragmentButton.setOnClickListener {
+            val intent = Intent(this, TestFragmentActivity::class.java)
+            startActivity(intent)
+        }
 
         emailField.addTextChangedListener(this)
         passwordField.addTextChangedListener(this)
@@ -71,6 +80,17 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         mainContainer.addView(newTextView)
         // --- FIN
 
+
+
+        val user = firebaseAuth?.currentUser
+        if (user != null) {
+            user.uid
+            Toast.makeText(this, "ALREADY CONNECTED", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "NOT CONNECTED", Toast.LENGTH_LONG).show()
+        }
+
+
     }
 
     fun onUserTryLogin() {
@@ -78,19 +98,31 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         val email = emailField.text.toString()
         val password = passwordField.text.toString()
 
+        firebaseAuth?.signInWithEmailAndPassword(email, password)
+            ?.addOnCompleteListener { result ->
 
-        val alertBuild = AlertDialog.Builder(this, R.style.CustomDialog)
-        alertBuild.setMessage("CLICK !! ($email / $password)")
-        alertBuild.setCancelable(true)
-        alertBuild.setIcon(R.drawable.logo)
-        alertBuild.setPositiveButton("OK") { dialog, which ->
+                if (result.isSuccessful) {
 
-        }
+                    val alertBuild = AlertDialog.Builder(this, R.style.CustomDialog)
+                    alertBuild.setMessage("CLICK !! ($email / $password)")
+                    alertBuild.setCancelable(true)
+                    alertBuild.setIcon(R.drawable.logo)
+                    alertBuild.setPositiveButton("OK") { dialog, which ->
 
-        val dialog = alertBuild.create()
-        dialog.show()
+                    }
 
-        //Toast.makeText(this, "CLICK !! ($email / $password)", Toast.LENGTH_SHORT).show()
+                    val dialog = alertBuild.create()
+                    dialog.show()
+
+                } else {
+                    Toast.makeText(this, "ALALAL ERREUR", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+
+
+
+
     }
 
     override fun afterTextChanged(s: Editable?) {

@@ -2,7 +2,9 @@ package fr.hetic.h2p2022.service
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 /**
@@ -18,6 +20,8 @@ interface RickMortyApi {
     @GET("character/{id}")
     fun getCharater(@Path("id") id: String): Call<Character>
 }
+
+
 
 data class Origin(val name: String,
                   val url: String)

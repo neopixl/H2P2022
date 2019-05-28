@@ -33,11 +33,19 @@ class RickMortyActivity : AppCompatActivity() {
             false
         )
 
-        val itemAdapter = ItemAdapter<IItem<*, *>>()
-        val fastAdapter = FastAdapter.with<CharacterItem, ItemAdapter<IItem<*, *>>>(itemAdapter)
+        val itemAdapter = ItemAdapter<CharacterItem>()
+        val fastAdapter = FastAdapter.with<CharacterItem, ItemAdapter<CharacterItem>>(itemAdapter)
         recyclerView.adapter = fastAdapter
 
 
+
+        itemAdapter.itemFilter.withFilterPredicate { item, constraint ->
+
+            val isOk = item.character.name.equals(constraint)
+            isOk
+        }
+
+        itemAdapter.filter("Rick")
 
 
 
@@ -57,9 +65,11 @@ class RickMortyActivity : AppCompatActivity() {
 
 
                         for (myCharacter in characterWrapper.results) {
-                            val item = CharacterItem(myCharacter)
+                            if (myCharacter.name.isNotEmpty()) {
+                                val item = CharacterItem(myCharacter)
 
-                            itemAdapter.add(item)
+                                itemAdapter.add(item)
+                            }
                         }
 
 

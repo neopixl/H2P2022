@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "313373692275",
+    "firebase_url": "https://hetich2p2022-groupe2.firebaseio.com",
+    "project_id": "hetich2p2022-groupe2",
+    "storage_bucket": "hetich2p2022-groupe2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313373692275:android:d8f1e8a1bb03f982",
+        "android_client_info": {
+          "package_name": "fr.hetic.h2p2022"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "313373692275-uqmglolk78s4sg43muvaempd6t6lohm8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.hetic.h2p2022",
+            "certificate_hash": "f736a93e0c672c35b3950f1a3f7da4f5a869d043"
+          }
+        },
+        {
+          "client_id": "313373692275-raqm2qritqac22gaf051j63kffc9lhgk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUtrFHBp7nP7_GkrLIuMncuLguhpu1cCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "313373692275-raqm2qritqac22gaf051j63kffc9lhgk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -92,4 +92,12 @@
             app:layout_constraintBottom_toTopOf="@+id/listButton" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"/>
+    <Button
+            android:text="Fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fragmentButton" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/rickButton" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

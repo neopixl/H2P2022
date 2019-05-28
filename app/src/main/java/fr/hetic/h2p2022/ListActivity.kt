@@ -56,20 +56,26 @@ class ListActivity : AppCompatActivity() {
 
         for (i in 0..20000) {
 
-            if (i % 10 == 0) {
+                if (i % 10 == 0) {
 
-                val titleItem = TitleItem("Title $i")
-                itemAdapter.add(titleItem)
+                    val titleItem = TitleItem("Title $i")
+                    itemAdapter.add(titleItem)
 
-            } else {
+                } else {
 
-                val pokemon = Pokemon("MY Pokemon $i")
-                val pokemonItem = PokemonItem(pokemon)
-                itemAdapter.add(pokemonItem)
-            }
+                    val pokemon = Pokemon("MY Pokemon $i")
+                    val pokemonItem = PokemonItem(pokemon)
+                    itemAdapter.add(pokemonItem)
+                }
 
 
         }
+
+
+        recyclerView.postDelayed({
+            itemAdapter.remove(2)
+            itemAdapter.removeRange(0, itemAdapter.adapterItemCount)
+        }, 10000)
 
     }
 }
