@@ -1,9 +1,13 @@
 package fr.hetic.h2p2022
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
+import androidx.core.content.edit
 import kotlinx.android.synthetic.main.activity_display.*
 
 class DisplayActivity : AppCompatActivity() {
@@ -30,6 +34,18 @@ class DisplayActivity : AppCompatActivity() {
         noButton.setOnClickListener {
             sendResult(false)
         }
+
+
+
+
+        // Exemple de sauvegarde de preferences
+        val sharedPreference = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreference.edit {
+            putBoolean("isMale", true)
+            putString("name", "Florian")
+        }
+        val isMale = sharedPreference.getBoolean("isMale", false)
+
     }
 
     fun sendResult(isOk: Boolean) {

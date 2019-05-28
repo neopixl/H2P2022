@@ -2,11 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="fr.hetic.h2p2022">
 
-
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:allowBackup="true"
@@ -15,6 +11,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".TestFragmentActivity">
+        </activity>
+        <activity android:name=".BottomBarActivity">
+        </activity>
         <activity android:name=".RickListActivity">
         </activity>
         <activity android:name=".ListActivity">

@@ -8,14 +8,20 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), TextWatcher {
+
+    var firebaseAuth: FirebaseAuth? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         validateButton.text = "Yolo"
         validateButton.setOnClickListener { onUserTryToLogin() }
@@ -50,6 +56,18 @@ class MainActivity : AppCompatActivity(), TextWatcher {
             val intent = Intent(this, RickListActivity::class.java)
             startActivity(intent)
         }
+        fragmentButton.setOnClickListener {
+            val intent = Intent(this, TestFragmentActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        val user = firebaseAuth?.currentUser
+        if (user != null) {
+            Toast.makeText(this, "IS CONNECTED", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, "NOT CONNECTED", Toast.LENGTH_LONG).show()
+        }
 
     }
 
@@ -59,19 +77,26 @@ class MainActivity : AppCompatActivity(), TextWatcher {
         val password = passwordField.text.toString()
 
 
-        val alertBuilder = AlertDialog.Builder(this, R.style.HeticDialog)
-        alertBuilder.setMessage("CLICKKK !! ($email / $password)")
-        alertBuilder.setCancelable(true)
-        alertBuilder.setPositiveButton("OK") { dialog, which ->
-            //????
-        }
+        firebaseAuth?.signInWithEmailAndPassword(email, password)
+            ?.addOnCompleteListener { result ->
 
-        val dialog = alertBuilder.create()
-        dialog.show()
+                if (result.isSuccessful) {
+                    val alertBuilder = AlertDialog.Builder(this, R.style.HeticDialog)
+                    alertBuilder.setMessage("CLICKKK !! ($email / $password)")
+                    alertBuilder.setCancelable(true)
+                    alertBuilder.setPositiveButton("OK") { dialog, which ->
+                        //????
+                    }
 
+                    val dialog = alertBuilder.create()
+                    dialog.show()
+                } else {
 
-        //Toast.makeText(this, "CLICKKK !! ($email / $password)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "NOT OK", Toast.LENGTH_LONG).show()
+                }
+            }
     }
+
 
     override fun afterTextChanged(s: Editable?) {
     }

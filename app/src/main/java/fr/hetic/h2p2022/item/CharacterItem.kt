@@ -33,7 +33,8 @@ class CharacterViewHolder(itemView: View) : FastAdapter.ViewHolder<CharacterItem
         statusText.text = item.character.status
         speciesText.text = item.character.species
 
-        Glide.with(logoImage)
+        Glide
+            .with(logoImage)
             .load(item.character.image)
             .into(logoImage)
     }

@@ -20,7 +20,6 @@ interface RickMortyApi {
     fun getCharacterById(@Path("myID") id: Int) : Call<Character>
 }
 
-
 data class Origin(
     val name: String,
     val url: String

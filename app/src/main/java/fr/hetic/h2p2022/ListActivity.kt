@@ -38,13 +38,15 @@ class ListActivity : AppCompatActivity() {
 
         val itemAdapter = ItemAdapter<IItem<*,*>>()
         val fastAdapter = FastAdapter.with<PokemonItem, ItemAdapter<IItem<*,*>>>(itemAdapter)
+        recyclerView.adapter = fastAdapter
+
+
         fastAdapter.withOnClickListener { view , adapter, item, position ->
 
             Toast.makeText(this@ListActivity, "POSTION CLICK $position", Toast.LENGTH_SHORT).show()
 
             true
         }
-        recyclerView.adapter = fastAdapter
 
 
         val pikachu = Pokemon("Pikachu")
